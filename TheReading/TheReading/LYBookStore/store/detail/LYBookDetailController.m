@@ -83,19 +83,52 @@
     [self requestContent];
 }
 
+
+
 - (void)renderContent:(NSDictionary *)result
 {
     [statusManageView stopRequest];
     LYBookItemData *bookItem = [[LYBookItemData alloc] init];
-    bookItem.name = result[@"BookName"];
+    if ([result[@"BookName"] class] != [NSNull class]) {
+        bookItem.name = result[@"BookName"];
+    } else {
+        bookItem.name = @"";
+    }
+    
     bookItem.price = @0;
-    bookItem.cover = result[@"CoverImage"];
-    bookItem.author = result[@"Author"];
+    
+    if ([result[@"CoverImage"] class] != [NSNull class]) {
+        bookItem.cover = result[@"CoverImage"];
+    } else {
+        bookItem.cover = @"";
+    }
+    
+    if ([result[@"Author"] class] != [NSNull class]) {
+        bookItem.author = result[@"Author"];
+    } else {
+        bookItem.author = @"";
+    }
 //    bookItem.categoryName = result[@"Category"];
-    bookItem.summary = result[@"Note"];
-    bookItem.ISBN = result[@"ISBN"];
-    bookItem.downloadUrl = result[@"epubDonwloadURL"];
-    bookItem.publishName = result[@"PublishName"];
+    if ([result[@"Note"] class] != [NSNull class]) {
+        bookItem.summary = result[@"Note"];
+    } else {
+        bookItem.summary = @"";
+    }
+    if ([result[@"ISBN"] class] != [NSNull class]) {
+        bookItem.ISBN = result[@"ISBN"];
+    } else {
+        bookItem.ISBN = @"";
+    }
+    if ([result[@"epubDonwloadURL"] class] != [NSNull class]) {
+        bookItem.downloadUrl = result[@"epubDonwloadURL"];
+    } else {
+        bookItem.downloadUrl = @"";
+    }
+    if ([result[@"PublishName"] class] != [NSNull class]) {
+        bookItem.publishName = result[@"PublishName"];
+    } else {
+        bookItem.publishName = @"";
+    }
     bookItem.isBookMode = YES;
     
     NSString *headerHTML =[NSString stringWithFormat: @"<div><div style='float:left;width:100px; height:198px; '>\
