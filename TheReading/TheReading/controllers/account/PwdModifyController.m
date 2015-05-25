@@ -10,7 +10,11 @@
 #import <LYService/LYAccountManager.h> 
 
 
-@interface PwdModifyController ()
+@interface PwdModifyController () {
+    CGPoint oriPoint;
+    CGPoint flowPoint;
+    CGPoint rePoint;
+}
 
 @end
 
@@ -44,6 +48,9 @@
     }
     panel.center = CGPointMake(appWidth/2.0f, height);
     panel.layer.cornerRadius = 8.0f;
+    oriPoint = panel.center;
+    rePoint = CGPointMake(oriPoint.x, oriPoint.y - 40);
+   // NSLog(@"\r\n rey:%f", rePoint.y);
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -54,12 +61,21 @@
     thirdTF.delegate = self;
     [secondTF addTarget:self action:@selector(textFieldDidChange:)
                      forControlEvents:UIControlEventEditingChanged];
+    NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
     [self performSelector:@selector(showKeyboard) withObject:nil afterDelay:0.5];
+    [nc addObserver:self
+           selector:@selector(handleKeyboardDidHidden)
+               name:UIKeyboardWillHideNotification
+             object:nil];
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endEditing)];
+    tap.numberOfTapsRequired = 1;
+    //[self.view addGestureRecognizer:tap];
 }
 
 - (void)showKeyboard
 {
-    [firstTF becomeFirstResponder];
+    //[firstTF becomeFirstResponder];
     firstTF.returnKeyType = UIReturnKeyNext;
     secondTF.returnKeyType = UIReturnKeyNext;
     thirdTF.returnKeyType = UIReturnKeyDone;
@@ -147,6 +163,35 @@
     [thirdTF resignFirstResponder];
 
     [[OWModalViewAnimator animator] dismissing];
+}
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField {
+    //NSLog(@"\r\n ori:%f,fl:%f,re:%F", oriPoint.y, flowPoint.y, rePoint.y);
+    if (flowPoint.y != rePoint.y) {
+        flowPoint = rePoint;
+        [UIView beginAnimations:@"showBoard" context:nil];
+        [UIView setAnimationDuration:0.2f];
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseIn];
+        self.view.center = flowPoint;
+        //[self.view layoutIfNeeded];
+        [UIView commitAnimations];
+    }
+    
+}
+
+- (void)handleKeyboardDidHidden {
+    [UIView animateWithDuration:0.2f animations:^{
+        self.view.center = oriPoint;
+        flowPoint = oriPoint;
+        [self.view layoutIfNeeded];
+    }];
+}
+
+- (void)endEditing
+{
+    [firstTF resignFirstResponder];
+    [secondTF resignFirstResponder];
+    [thirdTF resignFirstResponder];
 }
 
 @end
