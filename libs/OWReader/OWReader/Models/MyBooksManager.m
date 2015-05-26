@@ -528,6 +528,7 @@ static NSString *key = @"DSEPUB86";
 
 - (NSString *)decryptFile:(NSString *)inputPath
 {
+    NSLog(@"\r\n func:%s", __func__);
     NSString *text = [NSString stringWithContentsOfFile:inputPath encoding:NSUTF8StringEncoding error:nil];
     NSData *textData = [[NSData alloc] initWithBase64EncodedString:text options:NSDataBase64DecodingIgnoreUnknownCharacters];
     
@@ -536,6 +537,7 @@ static NSString *key = @"DSEPUB86";
 
 - (UIImage *)decryptImage:(NSString *)inputPath
 {
+        NSLog(@"\r\n func:%s", __func__);
     NSString *text = [NSString stringWithContentsOfFile:inputPath encoding:NSUTF8StringEncoding error:nil];
     NSData *imgData = [[NSData alloc] initWithBase64EncodedString:text options:NSDataBase64DecodingIgnoreUnknownCharacters];
     return [UIImage imageWithData:imgData];

@@ -178,7 +178,6 @@
 		B8904E4C1A765A95003BFB48 /* ShelfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8904E0A1A765A95003BFB48 /* ShelfViewController.m */; };
 		B8904E4D1A765A95003BFB48 /* ShelfViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8904E0B1A765A95003BFB48 /* ShelfViewController.xib */; };
 		B8904E4E1A765A95003BFB48 /* DownloadingProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B8904E0E1A765A95003BFB48 /* DownloadingProgressView.m */; };
-		B8904E4F1A765A95003BFB48 /* LYEpubDownloadButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B8904E101A765A95003BFB48 /* LYEpubDownloadButton.m */; };
 		B8904E501A765A95003BFB48 /* LYBookCategorySortingController.m in Sources */ = {isa = PBXBuildFile; fileRef = B8904E161A765A95003BFB48 /* LYBookCategorySortingController.m */; };
 		B8904E511A765A95003BFB48 /* LYBookCategorySortingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8904E171A765A95003BFB48 /* LYBookCategorySortingController.xib */; };
 		B8904E521A765A95003BFB48 /* LYBookCSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B8904E191A765A95003BFB48 /* LYBookCSCell.m */; };
@@ -504,7 +503,6 @@
 		B8904E0D1A765A95003BFB48 /* DownloadingProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadingProgressView.h; sourceTree = "<group>"; };
 		B8904E0E1A765A95003BFB48 /* DownloadingProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadingProgressView.m; sourceTree = "<group>"; };
 		B8904E0F1A765A95003BFB48 /* LYEpubDownloadButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYEpubDownloadButton.h; sourceTree = "<group>"; };
-		B8904E101A765A95003BFB48 /* LYEpubDownloadButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYEpubDownloadButton.m; sourceTree = "<group>"; };
 		B8904E121A765A95003BFB48 /* LYBookStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYBookStore.h; sourceTree = "<group>"; };
 		B8904E151A765A95003BFB48 /* LYBookCategorySortingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYBookCategorySortingController.h; sourceTree = "<group>"; };
 		B8904E161A765A95003BFB48 /* LYBookCategorySortingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYBookCategorySortingController.m; sourceTree = "<group>"; };
@@ -1197,7 +1195,6 @@
 				B8904E0D1A765A95003BFB48 /* DownloadingProgressView.h */,
 				B8904E0E1A765A95003BFB48 /* DownloadingProgressView.m */,
 				B8904E0F1A765A95003BFB48 /* LYEpubDownloadButton.h */,
-				B8904E101A765A95003BFB48 /* LYEpubDownloadButton.m */,
 			);
 			path = "common view";
 			sourceTree = "<group>";
@@ -1598,7 +1595,6 @@
 				B8ACBA3A1A71AFD600416E67 /* MagTabbarBackground.m in Sources */,
 				B833F62B1A4C223B009AF40F /* LYPageImage.m in Sources */,
 				B8E37BC11A2AECB8006BD4CA /* LoginViewController.m in Sources */,
-				B8904E4F1A765A95003BFB48 /* LYEpubDownloadButton.m in Sources */,
 				B833F6391A4C223B009AF40F /* MagCatSectionHeader.m in Sources */,
 				B833F6251A4C223B009AF40F /* ArticleHeaderViewController.m in Sources */,
 				B8904E361A765A95003BFB48 /* LYBookShelfController.m in Sources */,
@@ -1756,7 +1752,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "f8ce6564-021f-4c14-bfbb-878034b1f8ed";
+				PROVISIONING_PROFILE = "6195cbd7-6b5d-4489-bae7-4591838b76d8";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1793,7 +1789,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "f8ce6564-021f-4c14-bfbb-878034b1f8ed";
+				PROVISIONING_PROFILE = "6195cbd7-6b5d-4489-bae7-4591838b76d8";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1812,7 +1808,7 @@
 				INFOPLIST_FILE = "TheReading/app delegate/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f8ce6564-021f-4c14-bfbb-878034b1f8ed";
+				PROVISIONING_PROFILE = "6195cbd7-6b5d-4489-bae7-4591838b76d8";
 				SWIFT_OBJC_BRIDGING_HEADER = "TheReading/LYBookStore/bookshelf/TheReading-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1830,7 +1826,7 @@
 				INFOPLIST_FILE = "TheReading/app delegate/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f8ce6564-021f-4c14-bfbb-878034b1f8ed";
+				PROVISIONING_PROFILE = "6195cbd7-6b5d-4489-bae7-4591838b76d8";
 				SWIFT_OBJC_BRIDGING_HEADER = "TheReading/LYBookStore/bookshelf/TheReading-Bridging-Header.h";
 			};
 			name = Release;
