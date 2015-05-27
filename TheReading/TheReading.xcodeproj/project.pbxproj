@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		04B082211AF8BA79005F0871 /* LYStrAnalysis.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B082201AF8BA79005F0871 /* LYStrAnalysis.m */; };
+		04B9F3EF1B141DDB0011DBC2 /* LYEpubDownloadButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B9F3EE1B141DDA0011DBC2 /* LYEpubDownloadButton.m */; };
 		B610183B89F212E728852153 /* libPods-TheReading.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C8CE6FA8902B3C6BA0D148 /* libPods-TheReading.a */; };
 		B81F809A1A5C296500F05500 /* SelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B81F80981A5C296500F05500 /* SelectionCell.m */; };
 		B81F809B1A5C296500F05500 /* SelectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B81F80991A5C296500F05500 /* SelectionCell.xib */; };
@@ -235,6 +236,7 @@
 /* Begin PBXFileReference section */
 		04B0821F1AF8BA79005F0871 /* LYStrAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYStrAnalysis.h; sourceTree = "<group>"; };
 		04B082201AF8BA79005F0871 /* LYStrAnalysis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYStrAnalysis.m; sourceTree = "<group>"; };
+		04B9F3EE1B141DDA0011DBC2 /* LYEpubDownloadButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYEpubDownloadButton.m; sourceTree = "<group>"; };
 		2028E3EF6C3D6136DBD79524 /* Pods-TheReading.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheReading.release.xcconfig"; path = "../Pods/Target Support Files/Pods-TheReading/Pods-TheReading.release.xcconfig"; sourceTree = "<group>"; };
 		313F3C9C953DCB48E1443F48 /* Pods-TheReading.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheReading.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-TheReading/Pods-TheReading.debug.xcconfig"; sourceTree = "<group>"; };
 		78C8CE6FA8902B3C6BA0D148 /* libPods-TheReading.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TheReading.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1195,6 +1197,7 @@
 				B8904E0D1A765A95003BFB48 /* DownloadingProgressView.h */,
 				B8904E0E1A765A95003BFB48 /* DownloadingProgressView.m */,
 				B8904E0F1A765A95003BFB48 /* LYEpubDownloadButton.h */,
+				04B9F3EE1B141DDA0011DBC2 /* LYEpubDownloadButton.m */,
 			);
 			path = "common view";
 			sourceTree = "<group>";
@@ -1237,9 +1240,9 @@
 		B8904E621A76700A003BFB48 /* detail */ = {
 			isa = PBXGroup;
 			children = (
-				B8904E631A76700A003BFB48 /* LYBookDetailController.h */,
 				B8904E641A76700A003BFB48 /* LYBookDetailController.m */,
 				B8904E651A76700A003BFB48 /* LYBookDetailController.xib */,
+				B8904E631A76700A003BFB48 /* LYBookDetailController.h */,
 			);
 			path = detail;
 			sourceTree = "<group>";
@@ -1624,6 +1627,7 @@
 				B81F809A1A5C296500F05500 /* SelectionCell.m in Sources */,
 				B8904E441A765A95003BFB48 /* LYShelfSlideMenuController.m in Sources */,
 				B8E37BD21A2AED18006BD4CA /* ArticleSearchResultTableCell.m in Sources */,
+				04B9F3EF1B141DDB0011DBC2 /* LYEpubDownloadButton.m in Sources */,
 				B82B56501A5D322D00E60EE5 /* WYMainMenuController.m in Sources */,
 				B833F6351A4C223B009AF40F /* MagCatelogueCell.m in Sources */,
 				B83D70951A5E568C00808273 /* MagIssuesColllectionController.m in Sources */,
@@ -1811,6 +1815,7 @@
 				PROVISIONING_PROFILE = "6195cbd7-6b5d-4489-bae7-4591838b76d8";
 				SWIFT_OBJC_BRIDGING_HEADER = "TheReading/LYBookStore/bookshelf/TheReading-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1828,6 +1833,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "6195cbd7-6b5d-4489-bae7-4591838b76d8";
 				SWIFT_OBJC_BRIDGING_HEADER = "TheReading/LYBookStore/bookshelf/TheReading-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

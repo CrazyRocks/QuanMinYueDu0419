@@ -88,7 +88,7 @@
 - (void)renderContent:(NSDictionary *)result
 {
     [statusManageView stopRequest];
-   // NSLog(@"\r\n result:%@", result);
+    //NSLog(@"\r\n result:%@", result);
     LYBookItemData *bookItem = [[LYBookItemData alloc] init];
     if ([result[@"BookName"] class] != [NSNull class]) {
         bookItem.name = result[@"BookName"];

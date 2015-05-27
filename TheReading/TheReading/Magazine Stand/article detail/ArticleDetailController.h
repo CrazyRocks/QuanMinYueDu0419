@@ -17,7 +17,7 @@
 html{margin:0px; padding:0px; }\
 figure{margin:0px; padding:0px;}\
 img{width:%fpx; height:auto; margin:0px; }\
-p,div{margin:0px 0px 10px 0px; padding:0px; text-indent:2em;}\
+p,div{margin:0px 0px 10px 0px; padding:0px; text-indent:0em;}\
 </style>\
 </head>\
 \

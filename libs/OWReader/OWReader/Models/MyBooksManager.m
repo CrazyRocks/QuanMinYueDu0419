@@ -528,16 +528,23 @@ static NSString *key = @"DSEPUB86";
 
 - (NSString *)decryptFile:(NSString *)inputPath
 {
-    NSLog(@"\r\n func:%s", __func__);
     NSString *text = [NSString stringWithContentsOfFile:inputPath encoding:NSUTF8StringEncoding error:nil];
-    NSData *textData = [[NSData alloc] initWithBase64EncodedString:text options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    //NSLog(@"\r\n text:%@", text);
+    NSData *textData;
+    if (text != NULL && text != nil && ![text isEqualToString:@""]) {
+        //NSLog(@"\r\n not null");
+        textData = [[NSData alloc] initWithBase64EncodedString:text options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    } else {
+        //NSLog(@"\r\n null");
+        textData = [[NSData alloc] init];
+    }
+    //NSData *textData = [[NSData alloc] initWithBase64EncodedString:text options:NSDataBase64DecodingIgnoreUnknownCharacters];
     
     return [[NSString alloc] initWithData:textData encoding:NSUTF8StringEncoding];
 }
 
 - (UIImage *)decryptImage:(NSString *)inputPath
 {
-        NSLog(@"\r\n func:%s", __func__);
     NSString *text = [NSString stringWithContentsOfFile:inputPath encoding:NSUTF8StringEncoding error:nil];
     NSData *imgData = [[NSData alloc] initWithBase64EncodedString:text options:NSDataBase64DecodingIgnoreUnknownCharacters];
     return [UIImage imageWithData:imgData];

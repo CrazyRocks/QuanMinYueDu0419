@@ -425,6 +425,7 @@ static LYBookRenderManager *instance;
 
 - (OWCoreTextLayouter *)getLayouterByCatalogue:(Catalogue *)cat
 {
+    //NSLog(@"\r\n cat bookid:%@,filepath:%@", cat.bookID, cat.filePath);
     OWCoreTextLayouter *layouter = [self getLayouterFromTemp:cat.navIndex];
     if( !layouter) {
         layouter = [self generateLayouterByCat:cat];
@@ -441,6 +442,7 @@ static LYBookRenderManager *instance;
                       [NSString stringWithFormat:@"/%@/%@/%@", cat.bookID, [MyBooksManager sharedInstance].currentReadBook.opsPath, cat.filePath]];
     
 //    NSString *html = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
+    //NSLog(@"\r\n func:%s,path:%@", __func__, path);
     NSString *html = [[MyBooksManager sharedInstance] decryptFile:path];
 
     HTMLParser *parser = [[HTMLParser alloc] initWithString:html error:Nil ];
@@ -547,6 +549,7 @@ static LYBookRenderManager *instance;
                           [NSString stringWithFormat:@"/%@/%@/%@", obj.bookID, [MyBooksManager sharedInstance].currentReadBook.opsPath, obj.filePath]];
         
 //        NSString *html = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:NULL];
+            //NSLog(@"\r\n func:%s,path:%@", __func__, path);
         NSString *html = [[MyBooksManager sharedInstance] decryptFile:path];
 
         HTMLParser *parser = [[HTMLParser alloc] initWithString:html error:Nil ];
