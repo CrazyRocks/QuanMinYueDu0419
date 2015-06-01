@@ -78,7 +78,7 @@
 
 - (NSString *)refreshViewTitle
 {
-    return @"中国全民移动阅读书库";
+    return @"中国全民阅读移动书库";
 }
 
 - (void)viewDidLoad

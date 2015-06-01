@@ -132,13 +132,13 @@
 - (void)logOut
 {
     [LYAccountManager logOut];
-    
+
+    [self performSelector:@selector(popToLoginView) withObject:nil afterDelay:1.0f];
+}
+
+- (void)popToLoginView {
     UINavigationController *navController = [AppDelegate sharedInstance].navController;
-    for (UIViewController *controller in navController.viewControllers) {
-        if ([controller isKindOfClass:[LoginViewController class]]) {
-            [navController popToViewController:controller animated:YES];
-        }
-    }
+    [navController popToRootViewControllerAnimated:NO];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

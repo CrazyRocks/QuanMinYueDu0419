@@ -39,11 +39,12 @@
     CGFloat headerHeight = 0, viewWidth = appWidth;
     UIColor *bgColor = [UIColor blackColor];
     if (isPad) {
-        bgView.hidden = YES;
+        //bgView.hidden = YES;
         bgColor = [OWColor colorWithHex:0x595959];
         headerHeight = 40;
         viewWidth = 64;
         accountButton.hidden = NO;
+        _tableView.backgroundColor = bgColor;
     }
     else {
         headerHeight = 66;

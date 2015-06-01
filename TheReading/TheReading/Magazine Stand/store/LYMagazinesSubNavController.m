@@ -39,11 +39,15 @@
         [UIView animateWithDuration:0.2 animations:^{
             weakSelf->searchHeader.center = weakSelf->shSchoolCenter;
             weakSelf->pagingController.view.center = weakSelf->cntSchoolCenter;
+            /*searchHeader.center = shSchoolCenter;
+            pagingController.view.center = cntSchoolCenter;*/
         }];
         
     }];
     [[NSNotificationCenter defaultCenter] addObserverForName:MAG_HIDE_SEARCHBAR object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification *note) {
         [UIView animateWithDuration:0.2 animations:^{
+            /*searchHeader.center = shHomeCenter;
+            pagingController.view.center = cntHomeCenter;*/
             weakSelf->searchHeader.center = weakSelf->shHomeCenter;
             weakSelf->pagingController.view.center = weakSelf->cntHomeCenter;
         }];
