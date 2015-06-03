@@ -44,9 +44,9 @@
     isShaking = YES;
     scale = 0.9;
     
-    //生成一个－5 ～ 5 之间的旋转角度值
+    //生成一个 3 ～ 5 之间的旋转角度值
     void(^calculateDegress)() = ^{
-        shakeDegress = (arc4random() % 11) - 5;
+        shakeDegress = (arc4random() % 2) + 3;
     };
     calculateDegress();
     
