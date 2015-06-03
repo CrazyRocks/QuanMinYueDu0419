@@ -15,13 +15,7 @@
 
 - (void)awakeFromNib
 {
-    if (isPad) {
-        self.backgroundColor = self.contentView.backgroundColor = [UIColor blackColor];
-        self.contentView.backgroundColor = [UIColor clearColor];
-    } else {
-        self.backgroundColor = self.contentView.backgroundColor = [UIColor clearColor];
-    }
-
+    self.contentView.backgroundColor = self.backgroundColor = [UIColor clearColor];
     self.backgroundView = [[MTCBackgroundView alloc] init];
     self.selectedBackgroundView = [[MTCSelectedBackgroundView alloc] initWithFrame:self.bounds];
     

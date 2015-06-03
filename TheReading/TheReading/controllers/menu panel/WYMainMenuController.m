@@ -40,7 +40,7 @@
     UIColor *bgColor = [UIColor blackColor];
     if (isPad) {
         //bgView.hidden = YES;
-        bgColor = [OWColor colorWithHex:0x595959];
+        //bgColor = [OWColor colorWithHex:0x595959];
         headerHeight = 40;
         viewWidth = 64;
         accountButton.hidden = NO;
@@ -64,6 +64,9 @@
 - (void)configCell:(MainMenuCell *)cell data:(LYMenuData *)item indexPath:(NSIndexPath *)indexPath
 {
     [cell setContent:item];
+    if (isPad) {
+        cell.backgroundColor = [UIColor blackColor];
+    }
 }
 
 - (void)excuteRequest

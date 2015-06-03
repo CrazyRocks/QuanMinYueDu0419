@@ -66,6 +66,7 @@
 {
     cell.needRenderForiPad = NO;
     [cell setContent:item];
+    cell.backgroundColor = [UIColor clearColor];
 }
 
 - (void)excuteRequest
