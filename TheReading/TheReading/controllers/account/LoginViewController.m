@@ -156,7 +156,14 @@
         [weakSelf->loginButton setTitle:@"登录失败" forState:UIControlStateNormal];
 
         if (message && message.length > 1) {
-            [[OWMessageView sharedInstance] showMessage:message autoClose:YES];
+            NSString *networkError = @"Error Domain=";
+            NSRange rangeError = [message rangeOfString:networkError];
+            if (rangeError.length == 0 || rangeError.location == NSNotFound) {
+                [[OWMessageView sharedInstance] showMessage:message autoClose:YES];
+            } else {
+                NSString *networkErrorMsg = @"当前网络不可使用,请检查网络配置";
+                [[OWMessageView sharedInstance] showMessage:networkErrorMsg autoClose:YES];
+            }
         }
     };
     GLHttpRequstResult successCallBack = ^(id result){
