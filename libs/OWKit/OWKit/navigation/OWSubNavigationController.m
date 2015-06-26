@@ -164,6 +164,7 @@
         [UIView animateWithDuration:0.25 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             sortingController.view.center = homeCenter;
             navigationBar.alpha = 0;
+            [sortingController reloadSortingView:[self subNavDataSource]];
         } completion:^(BOOL finished) {
             
         }];
@@ -171,7 +172,6 @@
     isExpand = !isExpand;
     [udButton setExpand:isExpand];
 }
-
 
 - (Class)getSortingControllerClass
 {

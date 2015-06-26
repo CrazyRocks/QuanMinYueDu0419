@@ -31,6 +31,8 @@
     OWViewController    *currentController;
     
     UITapGestureRecognizer  *tap;
+    BOOL isMag;
+    BOOL isBookStroe;
 }
 @end
 
@@ -60,7 +62,7 @@
         }];
         [self addChildViewController:offlineController];
         
-        magRootController= [[LYMagazinesStandController alloc] init];
+        /*magRootController= [[LYMagazinesStandController alloc] init];
         [magRootController setReturnToPreController:^{
             [weakSelf menuTapped:Nil];
         }];
@@ -72,7 +74,7 @@
         [bookStoreController setReturnToPreController:^{
             [weakSelf menuTapped:Nil];
         }];
-        [self addChildViewController:bookStoreController];
+        [self addChildViewController:bookStoreController];*/
         
         audioController  = [[LYAudioController alloc] init];
         [audioController setReturnToPreController:^{
@@ -116,16 +118,22 @@
 
 - (void)openMenu:(LYMenuData *)menu
 {
+    isMag = false;
+    isBookStroe = false;
     currentMenu = menu;
     NSString *moduleCode = menu.menuType;
     if ([menu.menuType isEqualToString:@"article"]) {
         [self intoArticleList:menu];
     }
     else if ([moduleCode isEqualToString:@"magazine"]) {
-        [self intoMagazineStore];
+        //[self intoMagazineStore];
+        isMag = true;
+        [self intoMagazineStoreByMenu:menu];
     }
     else if ([moduleCode isEqualToString:@"book"]) {
-        [self intoBookStore];
+        //[self intoBookStore];
+        isBookStroe = true;
+        [self intoBookStoreByMenu:menu];
     }
     else if ([moduleCode isEqualToString:@"search"]) {
         [self intoArticleSearch];
@@ -175,6 +183,37 @@
     }
 }
 
+- (UINavigationController *)creatMagController:(LYMenuData *)menu
+{
+    __weak typeof (self) weakSelf = self;
+    LYMagazinesStandController *magRootCtrl = [[LYMagazinesStandController alloc] init];
+    [magRootCtrl setReturnToPreController:^{
+        [weakSelf menuTapped:Nil];
+    }];
+    magRootCtrl.menu = menu;
+    
+    UINavigationController *magNavCtrl = [[UINavigationController alloc] initWithRootViewController:magRootCtrl];
+    magNavCtrl.navigationBarHidden = YES;
+    
+    
+    [controllers setObject:magNavCtrl forKey:menu.menuName];
+    [self addChildViewController:magNavCtrl];
+    return magNavCtrl;
+}
+
+- (void)intoMagazineStoreByMenu:(LYMenuData *)menu
+{
+    UINavigationController *magController = controllers[menu.menuName];
+    if (!magController) {
+        magController = [self creatMagController:menu];
+    }
+    //[magazinesStandController addChildViewController:magController];
+    [self animateToShowController:magController];
+    if (!isPad) {
+        accountButton.hidden = NO;
+    }
+}
+
 - (void)intoArticleSearch
 {
     [self animateToShowController:searchController];
@@ -195,6 +234,30 @@
 {
     bookStoreController.menu = currentMenu;
     [self animateToShowController:bookStoreController];
+    if (!isPad) {
+        accountButton.hidden = NO;
+    }
+}
+
+- (LYBookStoreRootController *)creatBookController:(LYMenuData *)menu
+{
+    __weak typeof (self) weakSelf = self;
+    LYBookStoreRootController *bookStoreCtrl = [[LYBookStoreRootController alloc] init];
+    [bookStoreCtrl setReturnToPreController:^{
+        [weakSelf menuTapped:Nil];
+    }];
+    bookStoreCtrl.menu = menu;
+    [self addChildViewController:bookStoreCtrl];
+    return bookStoreCtrl;
+}
+
+- (void)intoBookStoreByMenu:(LYMenuData *)menu
+{
+    LYBookStoreRootController *bookController = controllers[menu.menuName];
+    if (!bookController) {
+        bookController = [self creatBookController:menu];
+    }
+    [self animateToShowController:bookController];
     if (!isPad) {
         accountButton.hidden = NO;
     }
@@ -274,7 +337,7 @@
 
     if (controller == magazinesStandController ||
         controller == bookStoreController ||
-        controller == offlineController || controller == favoriteListControler) {
+        controller == offlineController || controller == favoriteListControler || isMag == true || isBookStroe == true) {
         magsStandCanvas.hidden = NO;
 
         [magsStandCanvas insertSubview:controller.view atIndex:0];
@@ -285,7 +348,7 @@
         }];
         
         if (controller == favoriteListControler ||
-            controller == bookStoreController) {
+            controller == bookStoreController || isBookStroe == true) {
             [controller performSelector:@selector(setBackButtonImage:) withObject:[UIImage imageNamed:@"menu_normal"]];
         }
         

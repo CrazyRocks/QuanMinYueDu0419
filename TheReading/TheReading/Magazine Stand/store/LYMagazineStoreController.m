@@ -12,6 +12,7 @@
 
 @interface LYMagazineStoreController () {
     LYMagazinesSubNavController *subNavController;
+    NSArray *categorys;
 }
 @end
 
@@ -36,6 +37,7 @@
 {
     [super viewDidLoad];
     [self requestCategories];
+    categorys = [[NSArray alloc]init];
 }
 
 - (NSString *)loadingMessage
@@ -55,7 +57,7 @@
 
 - (void)requestCategories
 {
-    if ([LYMagazineGlobal sharedInstance].magCategories && [LYMagazineGlobal sharedInstance].magCategories.count > 0) {
+    if (/*[LYMagazineGlobal sharedInstance].magCategories && [LYMagazineGlobal sharedInstance].magCategories.count > 0*/0) {
         [self initContentView];
     }
     else {
@@ -63,6 +65,7 @@
         [httpRequest cancel];
         __weak typeof(self) weakSelf = self;
         httpRequest =  [categoryManager getMagazineCagegory:self.menu completion:^(NSArray *arr){
+            //NSLog(@"\r\n arr:%@", arr);
             NSMutableArray *items = [[NSMutableArray alloc] init];
             for (NSDictionary *cat in arr) {
                 OWSubNavigationItem *item = [[OWSubNavigationItem alloc] init];
@@ -70,7 +73,8 @@
                 item.catName  = cat[@"CategoryName"];
                 [items addObject:item];
             }
-            [LYMagazineGlobal sharedInstance].magCategories = items;
+            //[LYMagazineGlobal sharedInstance].magCategories = items;
+            categorys = items;
             [weakSelf initContentView];
         } failedCallBack:^(NSString *msg) {
             [weakSelf requestFault];
@@ -86,7 +90,8 @@
 - (void)initContentView
 {
     [statusManageView stopRequest];
-    subNavController.categories = [LYMagazineGlobal sharedInstance].magCategories;
+    //subNavController.categories = [LYMagazineGlobal sharedInstance].magCategories;
+    subNavController.categories = categorys;
     [self.view addSubview:subNavController.view];
     
     UIEdgeInsets padding = UIEdgeInsetsMake(0, 0, 0, 0);

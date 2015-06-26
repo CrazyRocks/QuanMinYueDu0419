@@ -66,20 +66,42 @@
             LYFavorite *favorite = [NSEntityDescription insertNewObjectForEntityForName:@"LYFavorite"
                                                                  inManagedObjectContext:cdd.parentMOC];
             favorite.userName = [[NSUserDefaults standardUserDefaults] objectForKey:LONGYUAN_NAME];
-            favorite.favoriteID = [item[@"ID"] stringValue];
-            favorite.titleID = item[@"ArticleID"];
-            favorite.title = item[@"Title"];
-            favorite.summary = [LYUtilityManager stringByTrimmingAllSpaces:item[@"Introduction"]];
-            favorite.author = item[@"Author"];
-            favorite.magGUID = item[@"MagazineGuid"];
-            favorite.magName = item[@"MagazineName"];
-            favorite.magYear = [item[@"Year"] stringValue];
-            favorite.magIssue = [item[@"Issue"] stringValue];
             
+            if (![item[@"ID"] isKindOfClass:[NSNull class]]) {
+                favorite.favoriteID = [item[@"ID"] stringValue];
+            }
+            if (![item[@"ArticleID"] isKindOfClass:[NSNull class]]) {
+                favorite.titleID = item[@"ArticleID"];
+            }
+            if (![item[@"Introduction"] isKindOfClass:[NSNull class]]) {
+                favorite.summary = [LYUtilityManager stringByTrimmingAllSpaces:item[@"Introduction"]];
+            }
+            if (![item[@"Title"] isKindOfClass:[NSNull class]]) {
+                favorite.title = item[@"Title"];
+            }
+            if (![item[@"Author"] isKindOfClass:[NSNull class]]) {
+                favorite.author = item[@"Author"];
+            }
+            if (![item[@"MagazineGuid"] isKindOfClass:[NSNull class]]) {
+                favorite.magGUID = item[@"MagazineGuid"];
+            }
+            if (![item[@"MagazineName"] isKindOfClass:[NSNull class]]) {
+                favorite.magName = item[@"MagazineName"];
+            }
+            if (![item[@"Year"] isKindOfClass:[NSNull class]]) {
+                favorite.magYear = [item[@"Year"] stringValue];
+            }
+            if (![item[@"Issue"] isKindOfClass:[NSNull class]]) {
+                favorite.magIssue = [item[@"Issue"] stringValue];
+            }
             if ([item[@"FirstImg"] isKindOfClass:[NSString class]])
                 favorite.thumbnailURL = item[@"FirstImg"];
             
-            favorite.kind = item[@"Kind"];
+            
+            if (![item[@"Kind"] isKindOfClass:[NSNull class]]) {
+                favorite.kind = item[@"Kind"];
+            }
+            
 //            NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 //            [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
 //            [formatter setLenient:YES];

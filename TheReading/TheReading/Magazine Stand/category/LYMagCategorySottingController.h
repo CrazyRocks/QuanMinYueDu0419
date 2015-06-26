@@ -15,4 +15,6 @@
 {
     __weak IBOutlet UICollectionView   *_collectionView;
 }
+@property (strong, nonatomic) NSArray *sortingArray;
+- (void)reloadSortingView;
 @end

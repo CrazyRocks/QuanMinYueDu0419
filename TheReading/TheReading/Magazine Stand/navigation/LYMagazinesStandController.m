@@ -43,7 +43,7 @@
             [[UIStyleManager sharedInstance] parseStyleFile:@"DefaultUIStyleConfig"];
         }
              
-        storeController = [[LYMagazineStoreController alloc] init];
+        /*storeController = [[LYMagazineStoreController alloc] init];
         [self addChildViewController:storeController];
         
         focusedMagCollectionController = [[LYFocusedMagCollectionController alloc] init];
@@ -53,7 +53,7 @@
         [self addChildViewController:shelfController];
         
         favoriteController = [[LYFavoriteTableViewController alloc] initWithNoneNavigationBar];
-        [self addChildViewController:favoriteController];
+        [self addChildViewController:favoriteController];*/
         
 
         //设置底部导航 UITabBarItem 的文字样式
@@ -80,8 +80,22 @@
 {
     [super viewDidLoad];
     
-    [navBar setTitle:@"杂志库"];
+    [navBar setTitle:self.menu.menuName];
 
+    storeController = [[LYMagazineStoreController alloc] init];
+    storeController.menu = self.menu;
+    [self addChildViewController:storeController];
+    
+    focusedMagCollectionController = [[LYFocusedMagCollectionController alloc] init];
+    [self addChildViewController:focusedMagCollectionController];
+    
+    shelfController = [[LYMagazineShelfController alloc] init];
+    [self addChildViewController:shelfController];
+    
+    favoriteController = [[LYFavoriteTableViewController alloc] initWithNoneNavigationBar];
+    [self addChildViewController:favoriteController];
+    
+    
     [self.view setBackgroundColor:[OWColor colorWithHex:0xfafafa]];
     [contentView setBackgroundColor:self.view.backgroundColor];
 

@@ -38,7 +38,7 @@
 - (NSString *)loadingMessage;
 - (NSString *)errorMessage;
 - (UIColor *)shimmeringColor;
-
+- (void)reloadSortingView: (NSArray *)sortArrayData;
 - (void)releaseData;
 
 - (IBAction)reloading:(id)sender;

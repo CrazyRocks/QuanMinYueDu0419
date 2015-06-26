@@ -684,7 +684,11 @@ static NSString *key = @"DSEPUB86";
                              @"itemcount":@(0)};
     
     return [CommonNetworkingManager GET:LONGYUAN_BOOK_LIST parameters:params completeBlock:^(NSDictionary *result) {
-        NSArray *arr = result[@"Data"];
+        //NSLog(@"\r\n getBookList:%@", result);
+        NSArray *arr = [[NSArray alloc] init];
+        if ([(result[@"Data"]) class] != [NSNull class] && result[@"ItemCount"] != 0) {
+            arr = [NSArray arrayWithArray:result[@"Data"]];
+        }
         NSInteger pageCount = ceilf([(NSNumber *)result[@"ItemCount"] integerValue] / 30.f);
         sCallBack(arr,pageCount);
     } faultBlock:^(NSString *msg) {

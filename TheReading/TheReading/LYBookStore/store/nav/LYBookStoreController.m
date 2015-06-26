@@ -53,6 +53,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    bookCategories = [[NSArray alloc] init];
     self.view.backgroundColor = [UIColor whiteColor];
         
     [navBar setTitle:@"书库"];
@@ -104,9 +105,10 @@
 {
     __weak typeof (self) weakSelf = self;
     httpRequest = [[LYCategoryManager sharedInstance] getBookCategoriesFromServer:self.menu
-                                                                       completion:^(NSArray *results) {
+        completion:^(NSArray *results) {
        NSMutableArray *items = [[NSMutableArray alloc] init];
        for (NSDictionary *cat in results) {
+
            OWSubNavigationItem *item = [[OWSubNavigationItem alloc] init];
            item.catID = cat[@"CategoryCode"];
            item.catName  = cat[@"CategoryName"];

@@ -49,6 +49,10 @@
     [_collectionView reloadData];
 }
 
+- (void)reloadSortingView: (NSArray *)sortArrayData {
+    self.sortingArray = [NSArray arrayWithArray:sortArrayData];
+    [_collectionView reloadData];
+}
 #pragma mark collection delegate
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
@@ -59,7 +63,8 @@
 {
     [collectionView.collectionViewLayout invalidateLayout];
     
-    return [LYMagazineGlobal sharedInstance].magCategories.count;
+    //return [LYMagazineGlobal sharedInstance].magCategories.count;
+    return self.sortingArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)theCollectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
@@ -67,8 +72,8 @@
     static NSString *cellIdentifier = @"Cell";
     
     LYMagazineCSCell *cell = [_collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
-    OWSubNavigationItem *cat = [LYMagazineGlobal sharedInstance].magCategories[indexPath.row];
-    
+    //OWSubNavigationItem *cat = [LYMagazineGlobal sharedInstance].magCategories[indexPath.row];
+    OWSubNavigationItem *cat = self.sortingArray[indexPath.row];
     [cell setInfo:cat];
     
     return cell;
@@ -79,9 +84,7 @@
                                  atIndexPath:(NSIndexPath *)indexPath
 {
     if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
-        LYMagazineCSSectionHeader *header = [acollectionView dequeueReusableSupplementaryViewOfKind :kind
-                                                                                 withReuseIdentifier:@"SectionHeader"
-                                                                                        forIndexPath:indexPath];
+        LYMagazineCSSectionHeader *header = [acollectionView dequeueReusableSupplementaryViewOfKind :kind withReuseIdentifier:@"SectionHeader" forIndexPath:indexPath];
         [header setIndexPath:indexPath];
         return header;
     }

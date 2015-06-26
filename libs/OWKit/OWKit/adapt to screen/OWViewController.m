@@ -125,7 +125,9 @@
 //        self.view = nil;
 //    }
 }
-
+- (void)reloadSortingView: (NSArray *)sortArrayData {
+    ;
+}
 - (void)releaseData
 {
     [statusManageView stopRequest];
