@@ -46,4 +46,7 @@
 //文章是否已读
 -(BOOL)alreadyRead:(NSString *)articleID;
 
+//删除本地已读数据
+- (void)deleteLocalArticle;
+
 @end

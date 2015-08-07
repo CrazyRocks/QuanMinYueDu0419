@@ -13,6 +13,7 @@
 #import "LYUserEvent.h"
 #import "LYMagCatelogueTableCellData.h"
 #import "LYUtilityManager.h"
+#import "SDWebImageManager.h"
 
 @implementation LYArticleManager
 
@@ -225,6 +226,14 @@ static LYArticleManager *instance;
  
     }];
     return alreadyRead;
+}
+
+- (void)deleteLocalArticle {
+    [cdd deleteObjects:@"LYArticle"];
+    [cdd deleteObjects:@"LYUserEvent"];
+    [cdd deleteObjects:@"LYArticleSummary"];
+    [SDWebImageManager.sharedManager.imageCache clearMemory];
+    [SDWebImageManager.sharedManager.imageCache clearDisk];
 }
 
 -(void)setArticleAlreadyRead:(NSString *)articleID

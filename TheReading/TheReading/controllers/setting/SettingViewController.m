@@ -20,7 +20,8 @@
     NSArray *sectionData2;
     NSArray *sectionData3;
     NSArray *sectionData4;
-
+    NSArray *sectionData5;
+    
     UIImage *fontSelectedIcon;
 
     SettingTableFooter *footerView;
@@ -53,12 +54,13 @@
     
     self.view.backgroundColor = _tableView.backgroundColor = [OWColor colorWithHex:loginBackground];
    
-    sections = @[@"字号设置",@"离线设置",@"关于", @"帐号设置"];
+    sections = @[@"字号设置",@"离线设置",@"关于", @"帐号设置", @"缓存设置"];
     
     sectionData1 = @[@"字体适中",@"大字体"];
     sectionData2 = @[@"同步收藏夹",@"在WiFi状态下自动下载"];
     sectionData3 = @[@"版本"];
     sectionData4 = @[@"修改登录密码"];
+    sectionData5 = @[@"清除缓存"];
     
     fontSelectedIcon = [OWImage imageWithName:@"ok"];
     
@@ -96,8 +98,11 @@
         case 2:
             num =  sectionData3.count;
             break;
-        default:
+        case 3:
             num =  sectionData4.count;
+            break;
+        default:
+            num =  sectionData5.count;
             break;
 
     }
@@ -154,11 +159,15 @@
         lableString = sectionData3[indexPath.row];
         [cell showRightLable];
     }
-    else {
+    else if (indexPath.section ==3) {
         lableString = sectionData4[indexPath.row];
         [cell setImageView:nil];
     }
-    
+    else {
+        lableString = sectionData5[indexPath.row];
+        [cell setImageView:nil];
+    }
+
     [cell.customLable setText:lableString];
     return cell;
 }
@@ -187,6 +196,18 @@
     }
     else if (indexPath.section == 3) {
         [self modifyPwd];
+    }
+    else if (indexPath.section == 4) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"清除缓存" message:@"确定要清除缓存数据？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alert show];
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        [[LYArticleManager sharedInstance]deleteLocalArticle];
+    } else {
+        return;
     }
 }
 

@@ -11,7 +11,7 @@
 #import <LYService/LYService.h>
 #import "SettingTableFooter.h"
 
-@interface SettingViewController : XibAdaptToScreenController<UITableViewDelegate,UITableViewDataSource, STFDelegate>
+@interface SettingViewController : XibAdaptToScreenController<UITableViewDelegate,UITableViewDataSource, STFDelegate, UIAlertViewDelegate>
 {
     __weak IBOutlet UITableView  *_tableView;
     
